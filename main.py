@@ -1,5 +1,6 @@
 
 import sys, sqlite3
+
 from utils import db
 from utils import display
 from utils import excel_extractor
@@ -12,6 +13,8 @@ from actions.v0_action_fct_fournie_1_partie_0 import AppFctFournie1Partie0
 from actions.v0_action_fct_fournie_2_partie_0 import AppFctFournie2Partie0
 from actions.v0_action_fct_comp_1_partie_1 import AppFctComp1Partie1
 from actions.v0_action_fct_comp_2_partie_1 import AppFctComp2Partie1
+from actions.action_ageMoyenEquipesOr import AppAgeMoyenEquipesOr
+from actions.action_classementPays import AppClassementPays
 
 # Classe utilisée pour lancer la fenêtre principale de l'application et définir ses actions
 class AppWindow(QMainWindow):
@@ -29,6 +32,8 @@ class AppWindow(QMainWindow):
     fct_fournie_2_dialog = None
     fct_comp_1_dialog = None
     fct_comp_2_dialog = None
+    window_2_1 = None
+    window_2_2 = None
 
     # Constructeur
     def __init__(self):
@@ -109,6 +114,7 @@ class AppWindow(QMainWindow):
         try:
             # On exécute les requêtes du fichier de création
             db.updateDBfile(self.data, "data/v1_createDB.sql")
+            pass
 
         except Exception as e:
              # En cas d'erreur, on affiche un message
@@ -183,6 +189,21 @@ class AppWindow(QMainWindow):
     ####################################################################################################################
 
     # TODO 2 : ajouter la définition des méthodes déclenchées lors des clicks sur les boutons de la partie 2
+    # En cas de clic sur le bouton de visualisation de l'âge moyen des équipes ayant gagné une médaille d'or
+    def openAgeMoyenMedailleOr(self):
+        if self.window_2_1 is not None:
+            self.window_2_1.close()
+        self.window_2_1 = AppAgeMoyenEquipesOr(self.data)
+        self.window_2_1.show()
+        self.changedValue.connect(self.window_2_1.refreshAgeMoyenEquipesOr)
+
+    # En cas de clic sur le bouton de visualisation du classement des pays
+    def openClassementPays(self):
+        if self.window_2_2 is not None:
+            self.window_2_2.close()
+        self.window_2_2 = AppClassementPays(self.data)
+        self.window_2_2.show()
+        self.changedValue.connect(self.window_2_2.refreshClassementPays)
     # TODO 3 : ajouter la définition des méthodes déclenchées lors des clicks sur les boutons de la partie 3
 
     # En cas de clic sur le bouton de visualisation des données
@@ -225,10 +246,12 @@ class AppWindow(QMainWindow):
 
     # En cas de clic sur la fonction à compléter 2
     def open_fct_comp_2(self):
+        print("ok")
         if self.fct_comp_2_dialog is not None:
             self.fct_comp_2_dialog.close()
         self.fct_comp_2_dialog = AppFctComp2Partie1(self.data)
         self.fct_comp_2_dialog.show()
+        self.changedValue.connect(self.fct_comp_2_dialog.refreshResult)
 
     ####################################################################################################################
     # Fonctions liées aux évènements (signal/slot/event)
