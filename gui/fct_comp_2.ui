@@ -24,7 +24,18 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="combBox_12"/>
+      <widget class="QComboBox" name="combBox_fct_comp_2">
+       <item>
+        <property name="text">
+         <string>test1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>test2</string>
+        </property>
+       </item>
+      </widget>
      </item>
     </layout>
    </item>
@@ -104,7 +115,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>combBox_12</sender>
+   <sender>combBox_fct_comp_2</sender>
    <signal>currentTextChanged(QString)</signal>
    <receiver>fct_comp_2</receiver>
    <slot>refreshResult()</slot>

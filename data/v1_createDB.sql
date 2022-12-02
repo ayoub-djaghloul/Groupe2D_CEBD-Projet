@@ -1,4 +1,8 @@
 -- TODO 1.3a : Créer les tables manquantes et modifier celles ci-dessous
+CREATE TABLE Discipline
+(
+    nomDi VARCHAR(50) PRIMARY KEY
+);
 
 CREATE TABLE Sportif_base
 (
@@ -12,7 +16,7 @@ CREATE TABLE Sportif_base
     CONSTRAINT SP_CK1 CHECK(numSp > 0),
     CONSTRAINT SP_CK2 CHECK(categorieSp IN ('feminin','masculin')),
 
-    FOREIGN KEY (numSp) REFERENCES Participant(numPart) ON DELETE CASCADE
+    FOREIGN KEY (numSp) REFERENCES Participant(numPa) ON DELETE CASCADE
 );
 
 CREATE TABLE Epreuve
@@ -36,28 +40,28 @@ CREATE TABLE Epreuve
 CREATE TABLE Resultat
 (
     numEp INTEGER PRIMARY KEY,
-    gold INTEGER,
-    silver INTEGER,
-    bronze INTEGER,
+    medaille_or INTEGER,
+    medaille_argent INTEGER,
+    medaille_bronze INTEGER,
 
     FOREIGN KEY (numEp) REFERENCES Epreuve(numEp) ON DELETE CASCADE,
-    FOREIGN KEY (gold) REFERENCES Participant(numPart),
-    FOREIGN KEY (silver) REFERENCES Participant(numPart),
-    FOREIGN KEY (bronze) REFERENCES Participant(numPart)
+    FOREIGN KEY (medaille_or) REFERENCES Participant(numPa),
+    FOREIGN KEY (medaille_argent) REFERENCES Participant(numPa),
+    FOREIGN KEY (medaille_bronze) REFERENCES Participant(numPa)
 );
 
 CREATE TABLE Participant
 (
-    numPart INTEGER PRIMARY KEY,
+    numPa INTEGER PRIMARY KEY,
 
-    CONSTRAINT PA_CK1 CHECK ((numPart > 0 and numPart < 100) or (numPart > 1000 and numPart < 1500))
+    CONSTRAINT PA_CK1 CHECK ((numPa > 0 and numPa < 100) or (numPa > 1000 and numPa < 1500))
 );
 
 CREATE TABLE Equipe_base
 (
     numEq INTEGER PRIMARY KEY,
 
-    FOREIGN KEY (numEq) REFERENCES Participant(numPart) ON DELETE CASCADE
+    FOREIGN KEY (numEq) REFERENCES Participant(numPa) ON DELETE CASCADE
 );
 
 CREATE TABLE EstEquipier
@@ -73,18 +77,13 @@ CREATE TABLE EstEquipier
 
 CREATE TABLE Inscription
 (
-    numPart INTEGER,
+    numPa INTEGER,
     numEp INTEGER,
 
-    CONSTRAINT INS_PK PRIMARY KEY (numPart, numEp),
+    CONSTRAINT INS_PK PRIMARY KEY (numPa, numEp),
 
-    FOREIGN KEY (numPart) REFERENCES Participant(numPart) ON DELETE CASCADE,
+    FOREIGN KEY (numPa) REFERENCES Participant(numPa) ON DELETE CASCADE,
     FOREIGN KEY (numEp) REFERENCES Epreuve(numEp) ON DELETE CASCADE
-);
-
-CREATE TABLE Discipline
-(
-    nomDi VARCHAR(50) PRIMARY KEY
 );
 
 -- TODO 1.4a : ajouter la définition de la vue LesAgesSportifs

@@ -10,3 +10,4 @@ DROP TABLE IF EXISTS Equipe_base;
 DROP TABLE IF EXISTS EstEquipier;
 DROP TABLE IF EXISTS Participant;
 -- TODO 3.3 : pensez à détruire vos triggers !
+DROP TRIGGER IF EXISTS VerificationVainqueur;

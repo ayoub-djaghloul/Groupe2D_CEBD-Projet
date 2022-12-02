@@ -95,7 +95,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox_fct_comp_1">
+      <widget class="QComboBox" name="comboBox_11">
        <item>
         <property name="text">
          <string>feminin</string>
@@ -120,7 +120,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>comboBox_fct_comp_1</sender>
+   <sender>comboBox_11</sender>
    <signal>currentTextChanged(QString)</signal>
    <receiver>fct_comp_1</receiver>
    <slot>refreshResult()</slot>
