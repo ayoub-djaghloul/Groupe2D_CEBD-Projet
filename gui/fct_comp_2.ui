@@ -24,14 +24,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_fct_comp_2"/>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_fct_comp_2">
-       <property name="text">
-        <string>Valider</string>
-       </property>
-      </widget>
+      <widget class="QComboBox" name="combBox_12"/>
      </item>
     </layout>
    </item>
@@ -111,18 +104,18 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton_fct_comp_2</sender>
-   <signal>clicked()</signal>
+   <sender>combBox_12</sender>
+   <signal>currentTextChanged(QString)</signal>
    <receiver>fct_comp_2</receiver>
    <slot>refreshResult()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>364</x>
-     <y>52</y>
+     <x>428</x>
+     <y>18</y>
     </hint>
     <hint type="destinationlabel">
-     <x>444</x>
-     <y>81</y>
+     <x>437</x>
+     <y>-5</y>
     </hint>
    </hints>
   </connection>
