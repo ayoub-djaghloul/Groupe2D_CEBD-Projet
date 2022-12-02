@@ -23,7 +23,7 @@ class AppFctComp1Partie1(QDialog):
             cursor = self.data.cursor()
             result = cursor.execute(
                 "SELECT numEp, nomEp, formeEp, nomDi, categorieEp, nbSportifsEp, strftime('%Y-%m-%d',dateEp,'unixepoch') FROM V0_LesEpreuves WHERE categorieEp = ?",
-                [self.ui.comboBox_11.currentText().strip()])
+                [self.ui.comboBox_fct_comp_1.currentText().strip()])
         except Exception as e:
             self.ui.table_fct_comp_1.setRowCount(0)
             display.refreshLabel(self.ui.label_fct_comp_1, "Impossible d'afficher les résultats : " + repr(e))
