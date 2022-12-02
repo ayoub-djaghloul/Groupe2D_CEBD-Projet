@@ -24,13 +24,25 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_fct_comp_1"/>
-     </item>
-     <item>
-      <widget class="QPushButton" name="valider_fct_comp_1">
-       <property name="text">
-        <string>Valider</string>
+      <widget class="QComboBox" name="comboBox_fct_comp_1">
+       <property name="currentIndex">
+        <number>0</number>
        </property>
+       <item>
+        <property name="text">
+         <string>masculin</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>feminin</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>mixte</string>
+        </property>
+       </item>
       </widget>
      </item>
     </layout>
@@ -109,24 +121,7 @@
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>valider_fct_comp_1</sender>
-   <signal>clicked()</signal>
-   <receiver>fct_comp_1</receiver>
-   <slot>refreshResult()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>364</x>
-     <y>52</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>444</x>
-     <y>81</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
  <slots>
   <slot>refreshResult()</slot>
  </slots>
